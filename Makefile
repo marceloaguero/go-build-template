@@ -16,10 +16,10 @@
 BIN := myapp
 
 # This repo's root import path (under GOPATH).
-PKG := github.com/thockin/go-build-template
+PKG := github.com/marceloaguero/go-build-template
 
 # Where to push the docker image.
-REGISTRY ?= thockin
+REGISTRY ?= marceloaguero
 
 # Which architecture to build - see $(ALL_ARCH) for options.
 ARCH ?= amd64
@@ -40,7 +40,8 @@ ALL_ARCH := amd64 arm arm64 ppc64le
 
 # Set default base image dynamically for each arch
 ifeq ($(ARCH),amd64)
-    BASEIMAGE?=alpine
+    #BASEIMAGE?=alpine
+	BASEIMAGE?=scratch
 endif
 ifeq ($(ARCH),arm)
     BASEIMAGE?=armel/busybox
@@ -54,7 +55,7 @@ endif
 
 IMAGE := $(REGISTRY)/$(BIN)-$(ARCH)
 
-BUILD_IMAGE ?= golang:1.10-alpine
+BUILD_IMAGE ?= golang:1.11
 
 # If you want to build all binaries, see the 'all-build' rule.
 # If you want to build all containers, see the 'all-container' rule.
