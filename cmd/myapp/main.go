@@ -16,8 +16,8 @@ limitations under the License.
 
 package main
 
-import "log"
+import "github.com/sirupsen/logrus"
 
 func main() {
-	log.Printf("hello, world!")
+	logrus.Printf("hello, world!")
 }
